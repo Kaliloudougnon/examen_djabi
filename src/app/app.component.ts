@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   title = 'consult_exam_front';
   etudiant: any;
   forms: FormGroup;
+  allEtudiant: any;
 
   ngOnInit(): void {
 
@@ -20,17 +21,31 @@ export class AppComponent implements OnInit {
   constructor(public service: EtudiantService, public fb: FormBuilder) {
     this.forms = this.fb.group(
       {
-        numPlace: this.fb.control(""),
-        session: this.fb.control("")
+        numPlace: this.fb.control(null),
+        session: this.fb.control(""),
+        academie: this.fb.control("")
       }
     )
+
   }
 
   chercherResultat() {
-    this.service.getEtudiant(this.forms?.value.numPlace,this.forms?.value.session).subscribe(
-      (data) => {
-        this.etudiant = data;
-      }
-    )
+
+    if (this.forms?.value.numPlace != null) {
+      this.service.getEtudiant(this.forms?.value.numPlace, this.forms?.value.session).subscribe(
+        (data) => {
+          this.etudiant = data;
+          this.allEtudiant=null;
+        }
+      )
+    }
+    if (this.forms?.value.numPlace == null) {
+      this.service.getAllEtudiant(this.forms?.value.academie, this.forms?.value.session).subscribe(
+        (data) => {
+          this.allEtudiant = data;
+          console.log(data);
+        }
+      )
+    }
   }
 }

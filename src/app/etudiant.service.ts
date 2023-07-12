@@ -13,4 +13,7 @@ export class EtudiantService {
   public getEtudiant(num:number,session:number):Observable<any>{
     return this.http.get<any>("http://localhost:8080/etudiant/"+num+"/"+session);
   }
+  public getAllEtudiant(academie:string,session:number):Observable<any>{
+    return this.http.get<any>("http://localhost:8080/allEtudiant/"+academie+"/"+session);
+  }
 }
