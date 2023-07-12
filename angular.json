@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/consult_exam_front",
+            "outputPath": "dist/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -44,7 +44,8 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "none"
+              "outputHashing": "none",
+              "baseHref": "https://kaliloudougnon.github.io/examen_djabi/index.html"
             },
             "development": {
               "buildOptimizer": false,
