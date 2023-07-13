@@ -1,13 +1,13 @@
 <div class="container mt-5">
   <div class="entete_style">
     <div class="row">
-      <div class="col-9">
+      <div class="col-9 ">
         <span>MINISTÈRE DE L'EDUCATION NATIONALE </span><br>
         <span class="ms-4"> **************</span><br>
         <span>CENTRE NATIONAL DES EXAMENS ET CONCOURS DE L'EDUCATION</span><br>
-        <span  class="ms-4"> **************</span><br>
+        <span class="ms-4"> **************</span><br>
         <span>ACADÉMIE D'ENSEIGNEMENT DE SEGOU</span><br>
-        <span  class="ms-4"> **************</span><br>
+        <span class="ms-4"> **************</span><br>
         <span class=""><b>POLE DE CORRECTION DE SEGOU</b></span>
       </div>
       <div class="col-3">
@@ -16,32 +16,33 @@
       </div>
     </div>
   </div>
-  <h2 class="text-center mt-4">RESULTATS DE BACCALAUREAT MALIEN <span *ngIf="etudiant">SESSION {{etudiant.session}}</span></h2>
-  <div class="mt-4 mb-5">
+  <h2 class="text-center mt-4">RESULTATS DE BACCALAUREAT MALIEN <span
+    *ngIf="etudiant">SESSION {{etudiant.session}}</span></h2>
+  <div class="mt-4 mb-5 ">
     <form [formGroup]="forms">
       <div class="row">
         <div class="col-4">
           <input type="text" class="form-control" placeholder="Numero de place" formControlName="numPlace">
         </div>
-        <div  class="col-4">
-          <select class="form-select mb-3"  aria-label=".form-select-lg example" formControlName="session">
+        <div class="col-4">
+          <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="session">
             <option selected value="2023">2023</option>
-            <option  value="2022">2022</option>
-            <option  value="2021">2021</option>
-            <option  value="2020">2020</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
           </select>
         </div>
         <div class="col-4">
-          <select class="form-select mb-3"  aria-label=".form-select-lg example" formControlName="academie">
+          <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="academie">
             <option selected value="BRD">Bamako Rive Droite</option>
-            <option  value="BRG">Bamako Rive gauche	</option>
-            <option  value="KK1">Kayes-Kita</option>
-            <option  value="KK2">Koulikoro-Kati</option>
-            <option  value="SK">Sikasso-Koutiala</option>
-            <option  value="SEGOU">Ségou</option>
-            <option  value="SAN">San</option>
-            <option  value="MDT">Mopti-Douentza-Tombouctou</option>
-            <option  value="GK">Gao-Kidal</option>
+            <option value="BRG">Bamako Rive gauche</option>
+            <option value="KK1">Kayes-Kita</option>
+            <option value="KK2">Koulikoro-Kati</option>
+            <option value="SK">Sikasso-Koutiala</option>
+            <option value="SEGOU">Ségou</option>
+            <option value="SAN">San</option>
+            <option value="MDT">Mopti-Douentza-Tombouctou</option>
+            <option value="GK">Gao-Kidal</option>
           </select>
         </div>
       </div>
@@ -50,47 +51,47 @@
       </div>
     </form>
   </div>
-    <div >
-      <table class="table  table-bordered">
-        <thead >
-        <tr  class="table-dark">
-          <th>N°PL</th>
-          <th>PRENOMS</th>
-          <th>NOM</th>
-          <th>SEXE</th>
-          <th>ANNEE NAISSANCE</th>
-          <th>ETABLISSEMENT</th>
-          <th>ACADEMIE</th>
-          <th>STATUT ELEVE</th>
-          <th>MENTION</th>
+  <div>
+    <table class="table  table-bordered">
+      <thead>
+      <tr class="table-dark">
+        <th>N°PL</th>
+        <th>PRENOMS</th>
+        <th>NOM</th>
+        <th>SEXE</th>
+        <th>ANNEE NAISSANCE</th>
+        <th>ETABLISSEMENT</th>
+        <th>ACADEMIE</th>
+        <th>STATUT ELEVE</th>
+        <th>MENTION</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-success" *ngIf="!allEtudiant">
+        <td>{{etudiant.numPlace}}</td>
+        <td>{{etudiant.lastName}}</td>
+        <td>{{etudiant.name}}</td>
+        <td>{{etudiant.sexe}}</td>
+        <td>{{etudiant.annnee_naissance}}</td>
+        <td>{{etudiant.etablissement}}</td>
+        <td>{{etudiant.academie}}</td>
+        <td>{{etudiant.statut}}</td>
+        <td>{{etudiant.mention}}</td>
+      </tr>
+      <ng-container *ngIf="allEtudiant">
+        <tr class="table-success" *ngFor="let etu of allEtudiant">
+          <td>{{etu.numPlace}}</td>
+          <td>{{etu.lastName}}</td>
+          <td>{{etu.name}}</td>
+          <td>{{etu.sexe}}</td>
+          <td>{{etu.annnee_naissance}}</td>
+          <td>{{etu.etablissement}}</td>
+          <td>{{etu.academie}}</td>
+          <td>{{etu.statut}}</td>
+          <td>{{etu.mention}}</td>
         </tr>
-        </thead>
-        <tbody >
-        <tr  class="table-success" *ngIf="!allEtudiant">
-          <td>{{etudiant.numPlace}}</td>
-          <td>{{etudiant.lastName}}</td>
-          <td>{{etudiant.name}}</td>
-          <td>{{etudiant.sexe}}</td>
-          <td>{{etudiant.annnee_naissance}}</td>
-          <td>{{etudiant.etablissement}}</td>
-          <td>{{etudiant.academie}}</td>
-          <td>{{etudiant.statut}}</td>
-          <td>{{etudiant.mention}}</td>
-        </tr>
-        <ng-container *ngIf="allEtudiant">
-          <tr  class="table-success" *ngFor="let etu of allEtudiant" >
-            <td>{{etu.numPlace}}</td>
-            <td>{{etu.lastName}}</td>
-            <td>{{etu.name}}</td>
-            <td>{{etu.sexe}}</td>
-            <td>{{etu.annnee_naissance}}</td>
-            <td>{{etu.etablissement}}</td>
-            <td>{{etu.academie}}</td>
-            <td>{{etu.statut}}</td>
-            <td>{{etu.mention}}</td>
-          </tr>
-        </ng-container>
-        </tbody>
-      </table>
-    </div>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
 </div>
