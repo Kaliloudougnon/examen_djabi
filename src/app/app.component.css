@@ -7,18 +7,15 @@
   color: white;
 }
 @media(max-width:450px) {
-  .table th{
-     font-size: small;
+  .table {
+     font-size: 5px;
   }
   .container{
     margin: 0;
   }
  .entete_style,.div-size {
-    width: 180%!important;
+    width: 100%!important;
    font-size: small;
   }
- .div-size{
-   margin-right:2% ;
-   margin-left: 2%;
- }
+
 }
