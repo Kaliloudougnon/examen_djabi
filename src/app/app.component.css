@@ -6,4 +6,19 @@
   box-shadow: 10px 10px 5px lightblue inset;
   color: white;
 }
-
+@media(max-width:450px) {
+  .table th{
+     font-size: small;
+  }
+  .container{
+    margin: 0;
+  }
+ .entete_style,.div-size {
+    width: 180%!important;
+   font-size: small;
+  }
+ .div-size{
+   margin-right:2% ;
+   margin-left: 2%;
+ }
+}
