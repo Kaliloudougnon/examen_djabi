@@ -6,16 +6,58 @@
   box-shadow: 10px 10px 5px lightblue inset;
   color: white;
 }
-@media(max-width:450px) {
+.footer{
+  background-color: #abbece;
+  box-shadow: 10px 10px 5px lightblue inset;
+
+}
+ul li a i{
+  color: white;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  position: center;
+  font-size: 50px;
+}
+
+.youtube a i:hover {
+  color: red;
+}
+
+.twitter a i:hover {
+  color: blueviolet;
+}
+
+.facebook a i:hover {
+  color: blue;
+}
+
+.instagram a i:hover {
+  color: #7c3a7e;
+}
+
+.linkedin a i:hover {
+  color: blue;
+}
+
+.whatsapp a i:hover {
+  color: green;
+}
+
+.footer-heading {
+  color: white;
+}
+
+@media (max-width: 450px) {
   .table {
-     font-size: 5px;
+    font-size: 5px;
   }
-  .container{
+
+  .container {
     margin: 0;
   }
- .entete_style,.div-size {
-    width: 100%!important;
-   font-size: small;
+
+  .entete_style, .div-size {
+    font-size: 5px;
   }
 
 }
