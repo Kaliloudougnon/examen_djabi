@@ -32,7 +32,23 @@ justify-content: center;
   box-shadow: 10px 10px 5px lightblue inset;
   margin-top: 250px;
 }
+fieldset.scheduler-border {
+  border: 2px solid #cccccc ;
+  padding: 7px 7px 7px 0px;
+  margin-top: 10px ;
+  background-color: #faf7f7;
+}
 
+legend.scheduler-border {
+  font-size: 1.0em !important;
+  font-weight: bold !important;
+  text-align: left !important;
+  width: auto;
+  padding: 0 5px;
+  margin-top: -20px;
+  background-color: #faf7f7;
+  color: #666666;
+}
 
 
 
@@ -71,27 +87,23 @@ ul li a i{
 .whatsapp a i:hover {
   color: green;
 }
-
-.footer-heading {
-  color: white;
+footer .row{
+  margin-right: 0!important;
 }
+
 
 @media (max-width: 450px) {
   .table {
     font-size: 5px;
   }
-
   .container {
     margin: 0;
   }
-
   .entete_style {
     font-size: 10px;
   }
 
-  .div-size {
-    font-size: 5px;
-  }
+
   ul li a i{
     color: white;
     margin-top: 15px;

@@ -20,11 +20,15 @@
     *ngIf="etudiant">SESSION {{etudiant.session}}</span></h2>
   <div class="mt-4 mb-5 div-size">
     <form [formGroup]="forms">
-      <div class="row">
-        <div class="col-4">
+      <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Critère de recherche</legend>
+      <div class="row ms-2">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <label  class="form-label">N° de place</label>
           <input type="text" class="form-control" placeholder="Numero de place" formControlName="numPlace">
         </div>
-        <div class="col-4">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <label  class="form-label">Année du bac</label>
           <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="session">
             <option></option>
             <option value="2023">2023</option>
@@ -33,7 +37,8 @@
             <option value="2020">2020</option>
           </select>
         </div>
-        <div class="col-4">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <label  class="form-label">Académie d'enseignement</label>
           <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="academie">
             <option></option>
             <option value="BRD">Bamako Rive Droite</option>
@@ -48,10 +53,11 @@
           </select>
         </div>
       </div>
-      <div class="">
+      <div class="ms-3">
         <button class="btn btn-outline-success mt-2 " (click)="chercherResultat()">Chercher</button>
         <button type="reset" class="btn btn-outline-info mt-2 ms-4">Reinitialiser</button>
       </div>
+      </fieldset>
     </form>
   </div>
   <div *ngIf="spinner" class="d-flex justify-content-center mb-4">
@@ -75,7 +81,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr class="table-success">
+      <tr class="">
         <td>{{etudiant.numPlace}}</td>
         <td>{{etudiant.lastName}}</td>
         <td>{{etudiant.name}}</td>
@@ -139,10 +145,10 @@
   </div>
   <div class="box-equipe "><span><b>M. DOUGNON Kalilou</b></span></div>
   <div class="box-equipe "><span>Chef de projet</span></div>
-  <div class="box-equipe "><span>Concepteur et realisateur de l'application</span></div>
+  <div class="box-equipe "><span>Concepteur et réalisateur de l'application</span></div>
 </div>
 <div>
-  <footer class="footer ms-3 me-3 mt-5">
+  <footer class="footer  mt-5">
     <div class="row p-4">
       <div class="container-xxl col-lg-7 col-sm-12 footer-social">
         <div class="footer-heading me-md-3">Contacter nous sur nos differentes pages de reseaux sociaux</div>
@@ -167,7 +173,7 @@
       <div class="col-lg-5 col-sm-12">
         <h4>Contact</h4>
         <div>M. DOUGNON Kalilou <br>
-        <span>Ingenieur d'etat en genie mathematique et informatique,developpeur
+        <span>Ingénieur d'etat en génie mathematique et informatique,developpeur
           fullStack (JAVA|J2EE|ANGULAR) chez SOFROCOM Maroc filiale d'ORANGE FRANCE.</span><br>
           <span>Telephone : +212 687277398</span><br>
           <span>E-mail : dougnonkalilou@gmail.com</span><br>
