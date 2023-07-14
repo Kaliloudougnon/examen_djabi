@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
   etudiant: any;
   forms: FormGroup;
   allEtudiant: any;
-
+  pagination: number = 0;
+  spinner=false;
   ngOnInit(): void {
 
 
@@ -30,12 +31,13 @@ export class AppComponent implements OnInit {
   }
 
   chercherResultat() {
-
+this.spinner=true;
     if (this.forms?.value.numPlace != null) {
       this.service.getEtudiant(this.forms?.value.numPlace, this.forms?.value.session).subscribe(
         (data) => {
           this.etudiant = data;
           this.allEtudiant=null;
+          this.spinner=false;
         }
       )
     }
@@ -43,9 +45,14 @@ export class AppComponent implements OnInit {
       this.service.getAllEtudiant(this.forms?.value.academie, this.forms?.value.session).subscribe(
         (data) => {
           this.allEtudiant = data;
+          this.etudiant=null;
+          this.spinner=false;
           console.log(data);
         }
       )
     }
+  }
+  renderPage(event: number) {
+    this.pagination = event;
   }
 }

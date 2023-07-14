@@ -26,7 +26,8 @@
         </div>
         <div class="col-4">
           <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="session">
-            <option selected value="2023">2023</option>
+            <option></option>
+            <option  value="2023">2023</option>
             <option value="2022">2022</option>
             <option value="2021">2021</option>
             <option value="2020">2020</option>
@@ -34,7 +35,8 @@
         </div>
         <div class="col-4">
           <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="academie">
-            <option selected value="BRD">Bamako Rive Droite</option>
+            <option></option>
+            <option  value="BRD">Bamako Rive Droite</option>
             <option value="BRG">Bamako Rive gauche</option>
             <option value="KK1">Kayes-Kita</option>
             <option value="KK2">Koulikoro-Kati</option>
@@ -47,11 +49,17 @@
         </div>
       </div>
       <div class="">
-        <button class="btn btn-outline-success mt-2" (click)="chercherResultat()">Chercher</button>
+        <button class="btn btn-outline-success mt-2 " (click)="chercherResultat()">Chercher</button>
+        <button type="reset" class="btn btn-outline-info mt-2 ms-4" >Reinitialiser</button>
       </div>
     </form>
   </div>
-  <div>
+  <div  *ngIf="spinner" class="d-flex justify-content-center mb-4">
+    <div class="spinner-border " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div *ngIf="etudiant">
     <table class="table  table-bordered table-responsive">
       <thead>
       <tr class="table-dark">
@@ -62,12 +70,12 @@
         <th>ANNEE NAISSANCE</th>
         <th>ETABLISSEMENT</th>
         <th>ACADEMIE</th>
-        <th>STATUT ELEVE</th>
+        <th>STATUT</th>
         <th>MENTION</th>
       </tr>
       </thead>
       <tbody>
-      <tr class="table-success" *ngIf="!allEtudiant">
+      <tr class="table-success">
         <td>{{etudiant.numPlace}}</td>
         <td>{{etudiant.lastName}}</td>
         <td>{{etudiant.name}}</td>
@@ -78,8 +86,31 @@
         <td>{{etudiant.statut}}</td>
         <td>{{etudiant.mention}}</td>
       </tr>
-      <ng-container *ngIf="allEtudiant">
-        <tr class="table-success" *ngFor="let etu of allEtudiant">
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="allEtudiant">
+    <table  class="table  table-bordered table-responsive">
+      <thead>
+      <tr class="table-dark">
+        <th>N°PL</th>
+        <th>PRENOMS</th>
+        <th>NOM</th>
+        <th>SEXE</th>
+        <th>ANNEE NAISSANCE</th>
+        <th>ETABLISSEMENT</th>
+        <th>ACADEMIE</th>
+        <th>STATUT </th>
+        <th>MENTION</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr class="table-success" *ngFor="let etu of allEtudiant | paginate
+              : {
+                  itemsPerPage: 45,
+                  currentPage: pagination,
+                  totalItems: 0
+                }">
           <td>{{etu.numPlace}}</td>
           <td>{{etu.lastName}}</td>
           <td>{{etu.name}}</td>
@@ -90,21 +121,36 @@
           <td>{{etu.statut}}</td>
           <td>{{etu.mention}}</td>
         </tr>
-      </ng-container>
       </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+      <pagination-controls
+        (pageChange)="renderPage($event)"
+      ></pagination-controls>
+    </div>
   </div>
-  <footer class="footer  navbar-dark mt-5">
-    <div class="container-xxl footer-social">
-      <div class="footer-heading me-md-3">Contacter nous sur nos differentes pages de reseaux sociaux </div>
+</div>
+<footer class="footer  mt-5">
+  <div class="row p-4">
+    <div class="container-xxl col-lg-7 col-sm-12 footer-social">
+      <div class="footer-heading me-md-3">Contacter nous sur nos differentes pages de reseaux sociaux</div>
       <ul class="navbar-nav gap-2 flex-row align-self-start">
-        <li class="twitter"><a href="#" class=" "><i class="btn btn-icon btn-social bi bi-twitter btn-inversen"></i></a></li>
-        <li class="facebook"><a href="#" class=""><i class="btn btn-icon btn-social bi bi-facebook btn-inverse"></i></a></li>
-        <li class="instagram"><a href="#" class=""><i class="btn btn-icon btn-social bi bi-instagram btn-inverse"></i></a></li>
-        <li class="whatsapp"><a href="#" class=""><i class="btn btn-icon btn-social bi bi-whatsapp btn-inverse"></i></a></li>
-        <li class="linkedin"><a href="https://www.Linkedin.com/in/kalilou-dougnon5b08b21b5/" class=""><i class="btn btn-icon btn-social bi bi-linkedin btn-inverse"></i></a></li>
-        <li class="youtube"><a href="https://www.youtube.com/" class=""><i class="btn btn-icon btn-social bi bi-youtube btn-inverse"></i></a></li>
+        <li class="twitter"><a href="#" class=" "><i class="btn btn-icon btn-social bi bi-twitter btn-inversen"></i></a>
+        </li>
+        <li class="facebook"><a href="#" class=""><i class="btn btn-icon btn-social bi bi-facebook btn-inverse"></i></a>
+        </li>
+        <li class="instagram"><a href="#" class=""><i
+          class="btn btn-icon btn-social bi bi-instagram btn-inverse"></i></a></li>
+        <li class="whatsapp"><a href="#" class=""><i class="btn btn-icon btn-social bi bi-whatsapp btn-inverse"></i></a>
+        </li>
+        <li class="linkedin"><a href="https://www.Linkedin.com/in/kalilou-dougnon5b08b21b5/" class=""><i
+          class="btn btn-icon btn-social bi bi-linkedin btn-inverse"></i></a></li>
+        <li class="youtube"><a href="https://www.youtube.com/" class=""><i
+          class="btn btn-icon btn-social bi bi-youtube btn-inverse"></i></a></li>
       </ul>
     </div>
-  </footer>
-</div>
+    <div class="col-lg-5 col-sm-12">
+      <h4>Apropos du concepteur</h4>
+    </div>
+  </div>
+</footer>
