@@ -27,7 +27,7 @@
         <div class="col-4">
           <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="session">
             <option></option>
-            <option  value="2023">2023</option>
+            <option value="2023">2023</option>
             <option value="2022">2022</option>
             <option value="2021">2021</option>
             <option value="2020">2020</option>
@@ -36,7 +36,7 @@
         <div class="col-4">
           <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="academie">
             <option></option>
-            <option  value="BRD">Bamako Rive Droite</option>
+            <option value="BRD">Bamako Rive Droite</option>
             <option value="BRG">Bamako Rive gauche</option>
             <option value="KK1">Kayes-Kita</option>
             <option value="KK2">Koulikoro-Kati</option>
@@ -50,11 +50,11 @@
       </div>
       <div class="">
         <button class="btn btn-outline-success mt-2 " (click)="chercherResultat()">Chercher</button>
-        <button type="reset" class="btn btn-outline-info mt-2 ms-4" >Reinitialiser</button>
+        <button type="reset" class="btn btn-outline-info mt-2 ms-4">Reinitialiser</button>
       </div>
     </form>
   </div>
-  <div  *ngIf="spinner" class="d-flex justify-content-center mb-4">
+  <div *ngIf="spinner" class="d-flex justify-content-center mb-4">
     <div class="spinner-border " role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
@@ -90,7 +90,7 @@
     </table>
   </div>
   <div *ngIf="allEtudiant">
-    <table  class="table  table-bordered table-responsive">
+    <table class="table  table-bordered table-responsive">
       <thead>
       <tr class="table-dark">
         <th>N°PL</th>
@@ -100,57 +100,80 @@
         <th>ANNEE NAISSANCE</th>
         <th>ETABLISSEMENT</th>
         <th>ACADEMIE</th>
-        <th>STATUT </th>
+        <th>STATUT</th>
         <th>MENTION</th>
       </tr>
       </thead>
       <tbody>
-        <tr class="table-success" *ngFor="let etu of allEtudiant | paginate
+      <tr class="" *ngFor="let etu of allEtudiant | paginate
               : {
                   itemsPerPage: 45,
                   currentPage: pagination,
                   totalItems: 0
                 }">
-          <td>{{etu.numPlace}}</td>
-          <td>{{etu.lastName}}</td>
-          <td>{{etu.name}}</td>
-          <td>{{etu.sexe}}</td>
-          <td>{{etu.annnee_naissance}}</td>
-          <td>{{etu.etablissement}}</td>
-          <td>{{etu.academie}}</td>
-          <td>{{etu.statut}}</td>
-          <td>{{etu.mention}}</td>
-        </tr>
+        <td>{{etu.numPlace}}</td>
+        <td>{{etu.lastName}}</td>
+        <td>{{etu.name}}</td>
+        <td>{{etu.sexe}}</td>
+        <td>{{etu.annnee_naissance}}</td>
+        <td>{{etu.etablissement}}</td>
+        <td>{{etu.academie}}</td>
+        <td>{{etu.statut}}</td>
+        <td>{{etu.mention}}</td>
+      </tr>
       </tbody>
     </table>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center mt-lg-5">
       <pagination-controls
         (pageChange)="renderPage($event)"
       ></pagination-controls>
     </div>
   </div>
 </div>
-<footer class="footer  mt-5">
-  <div class="row p-4">
-    <div class="container-xxl col-lg-7 col-sm-12 footer-social">
-      <div class="footer-heading me-md-3">Contacter nous sur nos differentes pages de reseaux sociaux</div>
-      <ul class="navbar-nav gap-2 flex-row align-self-start">
-        <li class="twitter"><a href="#" class=" "><i class="btn btn-icon btn-social bi bi-twitter btn-inversen"></i></a>
-        </li>
-        <li class="facebook"><a href="#" class=""><i class="btn btn-icon btn-social bi bi-facebook btn-inverse"></i></a>
-        </li>
-        <li class="instagram"><a href="#" class=""><i
-          class="btn btn-icon btn-social bi bi-instagram btn-inverse"></i></a></li>
-        <li class="whatsapp"><a href="#" class=""><i class="btn btn-icon btn-social bi bi-whatsapp btn-inverse"></i></a>
-        </li>
-        <li class="linkedin"><a href="https://www.Linkedin.com/in/kalilou-dougnon5b08b21b5/" class=""><i
-          class="btn btn-icon btn-social bi bi-linkedin btn-inverse"></i></a></li>
-        <li class="youtube"><a href="https://www.youtube.com/" class=""><i
-          class="btn btn-icon btn-social bi bi-youtube btn-inverse"></i></a></li>
-      </ul>
-    </div>
-    <div class="col-lg-5 col-sm-12">
-      <h4>Apropos du concepteur</h4>
-    </div>
+<div class="">
+  <div class="container box-equipe-header box-equipe mb-3">
+    <h3 class="p-1">Membres de l'equipe</h3>
   </div>
-</footer>
+  <div class="box-equipe ">
+    <img class=" " src="assets/imgs/pdg.png" alt="user">
+  </div>
+  <div class="box-equipe "><span><b>M. DOUGNON Kalilou</b></span></div>
+  <div class="box-equipe "><span>Chef de projet</span></div>
+  <div class="box-equipe "><span>Concepteur et realisateur de l'application</span></div>
+</div>
+<div>
+  <footer class="footer ms-3 me-3 mt-5">
+    <div class="row p-4">
+      <div class="container-xxl col-lg-7 col-sm-12 footer-social">
+        <div class="footer-heading me-md-3">Contacter nous sur nos differentes pages de reseaux sociaux</div>
+        <ul class="navbar-nav gap-2 flex-row align-self-start">
+          <li class="twitter"><a href="https://twitter.com/?lang=fr" class=" "><i
+            class="btn btn-icon btn-social bi bi-twitter btn-inversen"></i></a>
+          </li>
+          <li class="facebook"><a href="https://fr-fr.facebook.com/" class=""><i
+            class="btn btn-icon btn-social bi bi-facebook btn-inverse"></i></a>
+          </li>
+          <li class="instagram"><a href="https://www.instagram.com/" class=""><i
+            class="btn btn-icon btn-social bi bi-instagram btn-inverse"></i></a></li>
+          <li class="whatsapp"><a href="#" class=""><i
+            class="btn btn-icon btn-social bi bi-whatsapp btn-inverse"></i></a>
+          </li>
+          <li class="linkedin"><a href="https://www.Linkedin.com/in/kalilou-dougnon5b08b21b5/" class=""><i
+            class="btn btn-icon btn-social bi bi-linkedin btn-inverse"></i></a></li>
+          <li class="youtube"><a href="https://www.youtube.com/" class=""><i
+            class="btn btn-icon btn-social bi bi-youtube btn-inverse"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-lg-5 col-sm-12">
+        <h4>Contact</h4>
+        <div>M. DOUGNON Kalilou <br>
+        <span>Ingenieur d'etat en genie mathematique et informatique,developpeur
+          fullStack (JAVA|J2EE|ANGULAR) chez SOFROCOM Maroc filiale d'ORANGE FRANCE.</span><br>
+          <span>Telephone : +212 687277398</span><br>
+          <span>E-mail : dougnonkalilou@gmail.com</span><br>
+          <span>Adresse : Casablanca, Maroc</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
