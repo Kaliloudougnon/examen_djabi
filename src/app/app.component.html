@@ -16,10 +16,10 @@
       </div>
     </div>
   </div>
-  <h2 class="text-center div-size mt-4">RESULTATS DE BACCALAUREAT MALIEN <span
+  <h2 class="text-center  mt-4">RESULTATS DE BACCALAUREAT MALIEN <span
     *ngIf="etudiant">SESSION {{etudiant.session}}</span></h2>
   <div class="mt-4 mb-5 div-size">
-    <form [formGroup]="forms">
+    <form [formGroup]="forms" class="">
       <fieldset class="scheduler-border">
         <legend class="scheduler-border">Critère de recherche</legend>
         <div class="row ms-2">
@@ -151,12 +151,63 @@
     </div>
   </div>
 </div>
+<!--list deroulante des images-->
+<div id="carouselExampleInterval" class="carousel slide mb-5" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="data:image/jpeg;base64,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"
+        class="d-block " alt="...">
+    </div>
+    <div class="carousel-item ">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfukDveqDFHNhr8u9g-gM6Am6Erepz6znwLg&usqp=CAU"
+           class="d-block " alt="...">
+    </div>
+    <div class="carousel-item ">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSVpodpq75WOR4x5lSLLTCNMqW6CvlZA77TQ&usqp=CAU"
+           class="d-block " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTotWfVy8Dl5osIw3bEmVwYsy6p9QT6HbdzQQ&usqp=CAU"
+           class="d-block " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsKGNGiOpWnBYrHRWhIJkEIkr2DByOUdBj3Q&usqp=CAU"
+           class="d-block " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbfZn-z2fCeRcqVf5jX-kZoUZQCTM7GDckNQ&usqp=CAU"
+           class="d-block " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpbeWJLcmfeIdxTvtfhGRXEq5kGtGscc-Gsw&usqp=CAU"
+           class="d-block " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Ci7DOrywsfuUF6k8mP4QhL6zzar3LJlKYzKxg4SyTv2D2d1fEUZ0ndSK_CZB6d0moi4&usqp=CAU"
+        class="d-block " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/imgs/pdg.png" class="d-block " alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!--footer-->
 <div class="">
   <div class="container box-equipe-header box-equipe mb-3">
     <h3 class="p-1">Membres de l'equipe</h3>
   </div>
   <div class="box-equipe ">
-    <img class=" " src="assets/imgs/pdg.png" alt="user">
+    <img class=" box-img" src="assets/imgs/pdg.png" alt="user">
   </div>
   <div class="box-equipe "><span><b>M. DOUGNON Kalilou</b></span></div>
   <div class="box-equipe "><span>Chef de projet</span></div>
@@ -198,3 +249,4 @@
     </div>
   </footer>
 </div>
+
