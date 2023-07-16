@@ -22,43 +22,51 @@
     <form [formGroup]="forms">
       <fieldset class="scheduler-border">
         <legend class="scheduler-border">Critère de recherche</legend>
-      <div class="row ms-2">
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <label  class="form-label">N° de place</label>
-          <input type="text" class="form-control" placeholder="Numero de place" formControlName="numPlace">
+        <div class="row ms-2">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label class="form-label">N° de place</label>
+            <input type="text" class="form-control" placeholder="Numero de place" formControlName="numPlace">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label class="form-label">Année du bac</label>
+            <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="session">
+              <option></option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label class="form-label">Académie d'enseignement</label>
+            <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="academie">
+              <option></option>
+              <option value="BRD">Bamako Rive Droite</option>
+              <option value="BRG">Bamako Rive gauche</option>
+              <option value="KK1">Kayes-Kita</option>
+              <option value="KK2">Koulikoro-Kati</option>
+              <option value="SK">Sikasso-Koutiala</option>
+              <option value="SEGOU">Ségou</option>
+              <option value="SAN">San</option>
+              <option value="MDT">Mopti-Douentza-Tombouctou</option>
+              <option value="GK">Gao-Kidal</option>
+            </select>
+          </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <label  class="form-label">Année du bac</label>
-          <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="session">
-            <option></option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-          </select>
+        <div class="ms-3">
+          <button class="btn btn-outline-success mt-2 " (click)="chercherResultat()">Chercher</button>
+          <button type="reset" class="btn btn-outline-info mt-2 ms-4">Reinitialiser</button>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-          <label  class="form-label">Académie d'enseignement</label>
-          <select class="form-select mb-3" aria-label=".form-select-lg example" formControlName="academie">
-            <option></option>
-            <option value="BRD">Bamako Rive Droite</option>
-            <option value="BRG">Bamako Rive gauche</option>
-            <option value="KK1">Kayes-Kita</option>
-            <option value="KK2">Koulikoro-Kati</option>
-            <option value="SK">Sikasso-Koutiala</option>
-            <option value="SEGOU">Ségou</option>
-            <option value="SAN">San</option>
-            <option value="MDT">Mopti-Douentza-Tombouctou</option>
-            <option value="GK">Gao-Kidal</option>
-          </select>
-        </div>
-      </div>
-      <div class="ms-3">
-        <button class="btn btn-outline-success mt-2 " (click)="chercherResultat()">Chercher</button>
-        <button type="reset" class="btn btn-outline-info mt-2 ms-4">Reinitialiser</button>
-      </div>
       </fieldset>
     </form>
+  </div>
+  <div class="box-btn mb-5" *ngIf="isFindData">
+    <button class="btn btn-outline-success mt-2 ms-4 " (click)="affichageBySerie('TSE')">TSE</button>
+    <button class="btn btn-outline-success mt-2 ms-4" (click)="affichageBySerie('TSEXP')">TSEXP</button>
+    <button class="btn btn-outline-success mt-2 ms-4" (click)="affichageBySerie('TSECO')">TSECO</button>
+    <button class="btn btn-outline-success mt-2 ms-4" (click)="affichageBySerie('TSS')">TSS</button>
+    <button class="btn btn-outline-success mt-2 ms-4" (click)="affichageBySerie('TLL')">TLL</button>
+    <button class="btn btn-outline-success mt-2 ms-4" (click)="affichageBySerie('TAL')">TAL</button>
   </div>
   <div *ngIf="spinner" class="d-flex justify-content-center mb-4">
     <div class="spinner-border " role="status">
@@ -96,6 +104,13 @@
     </table>
   </div>
   <div *ngIf="allEtudiant">
+    <div class="mt-5 mb-3 text-center">
+      <div><b>LISTE DES CANDIDATS ADMIS AU BACCALAUREAT MALIEN</b></div>
+      <div>SESSION D'OCTOBRE {{forms.value.session}}</div>
+      <div><b>SERIE :
+        TERMINALE {{serie == "TSE" ? "SCIENCES EXACTES" : serie == "TSEXP" ? "SCIENCES EXPERIMENTALES" : serie == "TSECO" ? "SCIENCES ECONOMIQUES" : serie == "TSS" ? "SCIENCES SOCIALES" : serie == "TLL" ? "LANGUES-LETTRES" : serie == "TAL" ? "ARTS-LETTRES" : ""}}</b>
+      </div>
+    </div>
     <table class="table  table-bordered table-responsive">
       <thead>
       <tr class="table-dark">
@@ -173,7 +188,7 @@
       <div class="col-lg-5 col-sm-12">
         <h4>Contact</h4>
         <div>M. DOUGNON Kalilou <br>
-        <span>Ingénieur d'etat en génie mathematique et informatique,developpeur
+          <span>Ingénieur d'etat en génie mathematique et informatique,developpeur
           fullStack (JAVA|J2EE|ANGULAR) chez SOFROCOM Maroc filiale d'ORANGE FRANCE.</span><br>
           <span>Telephone : +212 687277398</span><br>
           <span>E-mail : dougnonkalilou@gmail.com</span><br>

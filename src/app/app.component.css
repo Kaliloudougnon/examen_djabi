@@ -32,6 +32,10 @@ justify-content: center;
   box-shadow: 10px 10px 5px lightblue inset;
   margin-top: 250px;
 }
+.box-btn{
+  display: flex;
+  justify-content: center;
+}
 fieldset.scheduler-border {
   border: 2px solid #cccccc ;
   padding: 7px 7px 7px 0px;
@@ -102,7 +106,9 @@ footer .row{
   .entete_style {
     font-size: 10px;
   }
-
+  .box-btn{
+    display: block;
+  }
 
   ul li a i{
     color: white;
