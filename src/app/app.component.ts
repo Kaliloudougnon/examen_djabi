@@ -19,12 +19,17 @@ export class AppComponent implements OnInit {
   allEtudiantTss: any = [];
   allEtudiantTll: any = [];
   allEtudiantTal: any = [];
+  allEtudiantSegouSan: any = [];
   pagination: number = 0;
   spinner = false;
   serie: any;
 
   ngOnInit(): void {
-
+    this.service.getAllEtudiant1().subscribe(
+      (data) => {
+        this.allEtudiantSegouSan = data;
+      }
+    )
 
   }
 
@@ -42,30 +47,36 @@ export class AppComponent implements OnInit {
   chercherResultat() {
     this.spinner = true;
     if (this.forms?.value.numPlace != null) {
-      this.service.getEtudiant(this.forms?.value.numPlace, this.forms?.value.session).subscribe(
+      this.service.getAllEtudiant1().subscribe(
         (data) => {
-          this.etudiant = data;
+          for (let i = 0; i < data.list.length; i++) {
+            if (data.list[i].numPlace==this.forms?.value.numPlace){
+              this.etudiant = data.list[i];
+              break
+            }
+          }
           this.allEtudiant = null;
           this.spinner = false;
         }
       )
     }
     if (this.forms?.value.numPlace == null) {
-      this.service.getAllEtudiant(this.forms?.value.academie, this.forms?.value.session).subscribe(
-        (data) => {
-          this.allEtudiantTse = [];
-          this.allEtudiantTsexp = [];
-          this.allEtudiantTseco = [];
-          this.allEtudiantTss = [];
-          this.allEtudiantTll = [];
-          this.allEtudiantTal = [];
-          this.isFindData = true;
-          this.etudiantBySerie(data);
-          this.etudiant = null;
-          this.spinner = false;
+       this.service.getAllEtudiant1().subscribe(
+          (data) => {
+            this.allEtudiantTse = [];
+            this.allEtudiantTsexp = [];
+            this.allEtudiantTseco = [];
+            this.allEtudiantTss = [];
+            this.allEtudiantTll = [];
+            this.allEtudiantTal = [];
+            this.isFindData = true;
+            this.etudiantBySerie(data.list);
+            this.service.getAllEtudiant1()
+            this.etudiant = null;
+            this.spinner = false;
 
-        }
-      )
+          }
+        )
     }
   }
 
@@ -105,7 +116,6 @@ export class AppComponent implements OnInit {
     switch (serie) {
       case "TSE":
         this.allEtudiant = this.allEtudiantTse;
-        console.log(this.allEtudiant);
         break;
       case "TSEXP":
         this.allEtudiant = this.allEtudiantTsexp;
