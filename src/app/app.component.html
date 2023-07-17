@@ -6,9 +6,6 @@
         <span class="ms-4"> **************</span><br>
         <span>CENTRE NATIONAL DES EXAMENS ET CONCOURS DE L'EDUCATION</span><br>
         <span class="ms-4"> **************</span><br>
-        <span>ACADÉMIE D'ENSEIGNEMENT DE SEGOU</span><br>
-        <span class="ms-4"> **************</span><br>
-        <span class=""><b>POLE DE CORRECTION DE SEGOU</b></span>
       </div>
       <div class="col-3">
         <p>REPUBLIQUE DU MALI</p>
@@ -46,9 +43,11 @@
               <option value="KK1" disabled>Kayes-Kita</option>
               <option value="KK2" disabled>Koulikoro-Kati</option>
               <option value="SK" disabled>Sikasso-Koutiala</option>
-              <option value="SS">Ségou-San</option>
+              <option value="SEGOU">Ségou</option>
+              <option value="SAN">San</option>
               <option value="MDT" disabled>Mopti-Douentza-Tombouctou</option>
-              <option value="GK" disabled>Gao-Kidal</option>
+              <option value="GAO">Gao</option>
+              <option value="GK" disabled>Kidal</option>
             </select>
           </div>
         </div>
@@ -59,7 +58,7 @@
       </fieldset>
     </form>
   </div>
-  <div class="box-btn mb-5" *ngIf="isFindData">
+  <div class="box-btn mb-5" *ngIf="isFindData && !etudiant">
     <button class="btn btn-outline-success mt-2 ms-4 " (click)="affichageBySerie('TSE')">TSE</button>
     <button class="btn btn-outline-success mt-2 ms-4" (click)="affichageBySerie('TSEXP')">TSEXP</button>
     <button class="btn btn-outline-success mt-2 ms-4" (click)="affichageBySerie('TSECO')">TSECO</button>
@@ -73,36 +72,75 @@
     </div>
   </div>
   <div *ngIf="etudiant">
-    <table class="table  table-bordered table-responsive">
-      <thead>
-      <tr class="table-dark">
-        <th>N°PL</th>
-        <th>PRENOMS</th>
-        <th>NOM</th>
-        <th>SEXE</th>
-        <th>ANNEE NAISSANCE</th>
-        <th>ETABLISSEMENT</th>
-        <th>ACADEMIE</th>
-        <th>STATUT</th>
-        <th>MENTION</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="">
-        <td>{{etudiant.numPlace}}</td>
-        <td>{{etudiant.lastName}}</td>
-        <td>{{etudiant.name}}</td>
-        <td>{{etudiant.sexe}}</td>
-        <td>{{etudiant.annnee_naissance}}</td>
-        <td>{{etudiant.etablissement}}</td>
-        <td>{{etudiant.academie}}</td>
-        <td>{{etudiant.statut}}</td>
-        <td>{{etudiant.mention}}</td>
-      </tr>
-      </tbody>
-    </table>
+    <div class="card mb-5">
+      <div class="card-header text-center">
+        ACADÉMIE D'ENSEIGNEMENT DE {{etudiant.academie}} SERIE :
+        TERMINALE  {{serie == "TSE" ? "SCIENCES EXACTES" : serie == "TSEXP" ? "SCIENCES EXPERIMENTALES" : serie == "TSECO" ? "SCIENCES ECONOMIQUES" : serie == "TSS" ? "SCIENCES SOCIALES" : serie == "TLL" ? "LANGUES-LETTRES" : serie == "TAL" ? "ARTS-LETTRES" : ""}}
+      </div>
+      <div class="card-body p-4">
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-12 style-etudiant">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">N°PL</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{etudiant.numPlace}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">PRENOMS</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{etudiant.lastName}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">NOM</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{etudiant.name}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">SEXE</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{etudiant.sexe=="M"?"Masculin":"Feminin"}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">ANNEE NAISSANCE</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{etudiant.annnee_naissance}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">ETABLISSEMENT</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{etudiant.etablissement}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">ACADEMIE</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{etudiant.academie}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">STATUT</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{etudiant.statut=="REG"?"Regulier":"Candidat libre"}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">MENTION</div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{etudiant.mention}}</div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mt-3 etu-img">
+            <img src="assets/imgs/user-icon.jpg" alt="user" class="w-75 h-75">
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted text-center">
+        SESSION DE JUIN {{etudiant.session}}
+      </div>
+    </div>
   </div>
-  <div *ngIf="allEtudiant">
+  <div *ngIf="isFindEtudiant && !etudiant">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+           class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
+           aria-label="Warning:">
+        <path
+          d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+      </svg>
+      <strong>Desole !</strong> Numero de place incorrect si ce n'est pas le cas alors ce candidat n'a pas reçu son
+      examen.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  <div *ngIf="allEtudiant && !etudiant">
     <div class="mt-5 mb-3 text-center">
       <div><b>LISTE DES CANDIDATS ADMIS AU BACCALAUREAT MALIEN</b></div>
       <div>SESSION D'OCTOBRE {{forms.value.session}}</div>
@@ -159,7 +197,7 @@
         class="d-block " alt="...">
     </div>
     <div class="carousel-item ">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfukDveqDFHNhr8u9g-gM6Am6Erepz6znwLg&usqp=CAU"
+      <img src="assets/imgs/logo.png"
            class="d-block " alt="...">
     </div>
     <div class="carousel-item ">

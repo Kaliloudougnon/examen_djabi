@@ -1,11 +1,11 @@
 .entete_style {
-  padding: 10px;
-  background-image: url("src/assets/imgs/img.png");
+  padding: 15px;
+  background-size: 200px 200px;
   opacity: 0.7;
   border-radius: 10px;
   box-shadow: 10px 10px 5px lightblue inset;
-  color: white;
 }
+
 
 .spinner-border {
   width: 70px;
@@ -19,8 +19,8 @@
 
 }
 
-.carousel-item{
-margin-left: 30%
+.carousel-item {
+  margin-left: 30%
 }
 
 .carousel-item img {
@@ -48,6 +48,24 @@ margin-left: 30%
   background-color: #a3cfbb;
   box-shadow: 10px 10px 5px lightblue inset;
   margin-top: 250px;
+}
+
+.style-etudiant {
+  font-weight: bold;
+}
+.etu-img img{
+  border-radius: 10px;
+  box-shadow:5px 5px 5px  saddlebrown;
+}
+.card-header {
+  box-shadow: 10px 10px 10px 15px lightblue inset;
+}
+
+.card-body {
+background-color: #fdf9f9;
+}
+.card-footer {
+  box-shadow: 10px 10px 10px 15px lightblue inset;
 }
 
 .box-btn {
