@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class AppComponent implements OnInit {
   title = 'consult_exam_front';
   isFindData = false;
+  isFindEtudiant=false;
   etudiant: any;
   forms: FormGroup;
   allEtudiant: any;
@@ -46,12 +47,15 @@ export class AppComponent implements OnInit {
 
   chercherResultat() {
     this.spinner = true;
+    this.etudiant = null;
+    this.isFindEtudiant=true;
     if (this.forms?.value.numPlace != null) {
       this.service.getAllEtudiant1().subscribe(
         (data) => {
           for (let i = 0; i < data.list.length; i++) {
             if (data.list[i].numPlace==this.forms?.value.numPlace){
               this.etudiant = data.list[i];
+              this.serie=data.list[i].serie;
               break
             }
           }

@@ -19,8 +19,8 @@
 
 }
 
-.carousel-item{
-margin-left: 30%
+.carousel-item {
+  margin-left: 30%
 }
 
 .carousel-item img {
@@ -48,6 +48,20 @@ margin-left: 30%
   background-color: #a3cfbb;
   box-shadow: 10px 10px 5px lightblue inset;
   margin-top: 250px;
+}
+
+.style-etudiant {
+  font-weight: bold;
+}
+.card-header {
+  box-shadow: 10px 10px 10px 15px lightblue inset;
+}
+
+.card-body {
+background-color: #fdf9f9;
+}
+.card-footer {
+  box-shadow: 10px 10px 10px 15px lightblue inset;
 }
 
 .box-btn {
