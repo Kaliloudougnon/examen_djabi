@@ -8,7 +8,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'consult_exam_front';
+  title = 'Resultat bac malien';
   isFindData = false;
   isFindEtudiant=false;
   etudiant: any;
